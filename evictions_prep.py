@@ -6,7 +6,7 @@ def get_prepared_eviction_data():
     '''Prepare eviction data for project'''
     
     # read in unprepared data
-    df = pd.read_excel('evictions_2023.xlsx')
+    df = pd.read_excel('eviction_cases.xlsx')
     
     # get relevant columns and rename for clarity
     df = df[['CaseNumber',        # used to distinguish unique cases
@@ -17,12 +17,12 @@ def get_prepared_eviction_data():
 
     df = df.rename(columns={'CaseNumber'      : 'case_number',
                             'JUDGMENT_DT'     : 'judgement_date',
-                            'POSTAL_CD'       : 'zips',
+                            'POSTAL_CD'       : 'zip_code',
                             'Disposition'     : 'disposition'})
 
-    # drop rows with zip codes not in
+    # drop rows with zip codes not in San Antonio
     # get first five digits of values in zip_code column
-    df['zips'] = df.zips.apply(lambda x : str(x)[:5])
+    df['zip_code'] = df.zip_code.apply(lambda x : str(x)[:5])
 
     # list of zips in San Antonio
     sa_zips = ['78201', '78202', '78203', '78204', '78205', 
@@ -45,7 +45,7 @@ def get_prepared_eviction_data():
                '78296', '78297', '78298', '78299']
 
     # keep only rows that have a zip code in sa_zips
-    df = df[df.zips.isin(sa_zips)]
+    df = df[df.zip_code.isin(sa_zips)]
     
     # drop rows with duplicate case numbers
     # sort values in descending order
@@ -60,7 +60,7 @@ def get_prepared_eviction_data():
 
     df = df[df.disposition.isin(evict)]
     
-    df.to_excel('evictions_prep.xlsx')
+    df.to_excel('evictions_prepared.xlsx')
     
 
 if __name__ == '__main__':
