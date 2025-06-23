@@ -60,7 +60,7 @@ def get_prepared_eviction_data():
 
     df = df[df.disposition.isin(evict)]
     
-    df.to_excel('evictions_prepared.xlsx')
+    df.to_excel('evictions_prepared.xlsx', index=False)
     
 
 if __name__ == '__main__':

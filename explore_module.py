@@ -7,6 +7,8 @@ from scipy.stats import pearsonr
 # import data sets
 
 def time_stamp(edf,rdf):
+    '''Prints time stamp information for evictions and requests data
+       Returns requests data shortened to only include data from 2024'''
 
     print(f'The eviction dataframe contains data from') 
     print(f'{edf.judgement_date.min()}')
@@ -17,7 +19,7 @@ def time_stamp(edf,rdf):
     print(f'{rdf.open_date.min()}')
     print(f'to') 
     print(f'{rdf.open_date.max()}')
-
+    print()
     print("Trimming request data to include only 2024")
     print('exporting to requests_2024')
     # modifying request data to include only 2024 data 
@@ -29,7 +31,7 @@ def time_stamp(edf,rdf):
 
 
 def get_request_bar(rdf):
-
+    ''' Prints bar graph of type column from requests dataframe'''
 
     colors = ['lightblue', 'lightblue','darkgrey','lightblue','lightblue','lightblue']
 
@@ -42,6 +44,7 @@ def get_request_bar(rdf):
 
 
 def get_case_bar(edf):
+    '''Prints bar graph of disposition column of evictions dataframe'''
 
     plt.figure(figsize=(10, 6))
     edf.disposition.value_counts().plot(kind='bar', color = 'lightblue')
@@ -52,6 +55,10 @@ def get_case_bar(edf):
 
 
 def get_zip_compare(edf,rdf):
+    '''Takes in evictions and requests dataframes
+       Returns both dataframes with zipcode column set to string type
+       and a dataframe showing the number of homelessness requests and eviction
+       cases took place in each zipcode in San Antonio in 2024'''
 
     # cast zip_code column in both df's as string type
     rdf['zip_code'] = rdf.zip_code.astype(str)
@@ -97,14 +104,17 @@ def get_zip_compare(edf,rdf):
             
             zip_dict[key].append(li[i])
 
+    # converting dict to dataframe
     zipdf = pd.DataFrame(zip_dict)
         
     return zipdf, rdf, edf
 
 
 def get_zip_scatter(zipdf):
-
-    # Create a basic scatter plot
+    '''Prints a scatterplot or eviction cases and homelessness requests found in zipdf 
+       along with correlation coefficient and p-value'''
+    
+    # graph info
     zipdf.plot.scatter(x='eviction_cases', y='homelessness_requests')
     plt.title('Strong Correlation Between Eviction Cases and Homelessness Requests')
     plt.xlabel('Eviction Cases')
@@ -112,6 +122,7 @@ def get_zip_scatter(zipdf):
     plt.grid(True)
     plt.show()
 
+    # get and print correlation coefficient and p-value
     correlation_coeff, p_value = pearsonr(zipdf['eviction_cases'], zipdf['homelessness_requests'])
     
     print(f'Correlation Coefficient: {correlation_coeff}')
