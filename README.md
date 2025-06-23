@@ -29,7 +29,7 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 |judgement| Type of decision made most recently on case|
 |Zip_code| Zip code where case was ruled|
 
-## Preparation
+## Prepare
 
 **311 request data was prepared using the following manner:**
 * Relevant columns were renames for ease of use all other columns were dropped
@@ -45,14 +45,16 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 * Dropped rows with disposition value indicating the case did not result in an eviction
 
 **For full preparation details see prep notebooks:**
-* (311 homelessness requests)[Add Link]
-* (Bexar county evictions)[Add Link]
+* (requests_prep_notebook)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/requests_prep_notebook.ipynb]
+* (evictions_prep_notebook)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/evictions_prep_notebook.ipynb]
 
 **Prep modules can be found here:**
-* (prepare_sa_311_homelessness_requests.py)[Add Link]
-* (prepare_sa_eviction_cases.py)[Add Link]
+* (get_requests)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_requests.py]
+* (get_evictions)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_evictions.py]
 
-## Exploration
+## Explore
+
+### (Full Exploration Notebook)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb]
 
 ### Is there enough time overlap in the evictions and requests data to make for a good comparison?
 * Evictions data cover all of 2024
