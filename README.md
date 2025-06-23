@@ -94,6 +94,6 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 * This suggests a link between evictions and homelessness
 * All available evidence suggests that evictions is a driver of homelessness
 
-## Further inquiry
+## Further Inquiry
 * Because the evidence we have is correlatory we cannot rule out the possibility that evictions and homelessness are both independently driven by third variable such as population
 * More research into this possibility should be conducted in the future
