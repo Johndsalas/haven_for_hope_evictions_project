@@ -45,16 +45,16 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 * Dropped rows with disposition value indicating the case did not result in an eviction
 
 **For full preparation details see prep notebooks:**
-* (requests_prep_notebook)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/requests_prep_notebook.ipynb]
-* (evictions_prep_notebook)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/evictions_prep_notebook.ipynb]
+* [requests_prep_notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/requests_prep_notebook.ipynb)
+* [evictions_prep_notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/evictions_prep_notebook.ipynb)
 
 **Prep modules can be found here:**
-* (get_requests)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_requests.py]
-* (get_evictions)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_evictions.py]
+* [get_requests](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_requests.py)
+* [get_evictions](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_evictions.py)
 
 ## Explore
 
-### (Full Exploration Notebook)[https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb]
+### [Full Exploration Notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb)
 
 ### Is there enough time overlap in the evictions and requests data to make for a good comparison?
 * Evictions data cover all of 2024
