@@ -32,6 +32,7 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 ## Prepare
 
 **311 request data was prepared using the following manner:**
+* The original data was downloaded from [Open Data SA](https://data.sanantonio.gov/dataset/service-calls)
 * Relevant columns were renames for ease of use all other columns were dropped
 * Dropped rows not pertaining to homelessness
 * X and Y coordinate columns were converted from NAD 1983 State Plane Texas South Central FIPS 4204 Feet to Tableau friendly latitude and longitude coordinates using pyproj
@@ -39,6 +40,7 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 * Dropped rows with zip codes that were outside of San Antonio
 
 **Bexar County eviction data was prepared using the following manner:**
+* The original data was provided by Bexar County to Ryan Orsinger, Director of Data Science and Research at Haven for Hope, who provided the data to me
 * Relevant columns were renamed for ease of use all other columns were dropped
 * Dropped rows with zip codes that were outside of San Antonio
 * Dropped rows with duplicate case numbers keeping only the row with the most recent judgement date for each unique case number
@@ -88,8 +90,8 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 * A scatterplot of the number of eviction cases and homelessness requests occuring in the same zip code has been made to explore the correlation between the two.
 
 ## Conclusion
-* Fluxuations in the number of 311 calls related to homelessness seem to be a good indicator of fluctuations in the homeless population
-* Fluxuations in the number of eviction cases with judgements likely leading to evictions seems to be a good indicator of fluctuations in the total number of evictions
+* Eviction Cases is a good measure of evictions
+* 311 calls related to homelessness is a good measeure of homelessness
 * There is a strong correlation between the number of eviction cases and the number of 311 calls related to homelessness in San Antonio in 2024
 * This suggests a link between evictions and homelessness
 * All available evidence suggests that evictions is a driver of homelessness
