@@ -8,7 +8,8 @@ from scipy.stats import pearsonr
 
 def time_stamp(edf,rdf):
     '''Prints time stamp information for evictions and requests data
-       Returns requests data shortened to only include data from 2024'''
+       exports requests data to excel shortened to only include data 
+       from 2024'''
 
     print(f'The eviction dataframe contains data from') 
     print(f'{edf.judgement_date.min()}')
@@ -106,6 +107,8 @@ def get_zip_compare(edf,rdf):
 
     # converting dict to dataframe
     zipdf = pd.DataFrame(zip_dict)
+
+    zipdf.to_excel('compare_zips_2024.xlsx')
         
     return zipdf, rdf, edf
 
