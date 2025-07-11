@@ -57,7 +57,7 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 
 ## Exploration in Jupyter Notebook
 
-### Full Exploration Notebook Coming Soon
+### [Full Exploration Notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb)
 
 ### Is there enough time overlap in the evictions and requests data to make for a good comparison?
 * Evictions data cover all of 2024
@@ -88,7 +88,7 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 
 ## Exploration in Tableau
 
-### [Full Tableau Story](https://public.tableau.com/app/profile/john.salas/viz/HavenEvictionsProject/Story?publish=yes)
+### Full Tableau Story Coming Soon
 
 ## Conclusion
 * Fluxuations in the number of 311 calls related to homelessness seem to be a good indicator of fluctuations in the homeless population
