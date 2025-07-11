@@ -57,7 +57,7 @@ Zip Codes in San Antonio with higher instances of evictions will also show highe
 
 ## Exploration in Jupyter Notebook
 
-### [Full Exploration Notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb)
+### Full Exploration Notebook Coming Soon
 
 ### Is there enough time overlap in the evictions and requests data to make for a good comparison?
 * Evictions data cover all of 2024
