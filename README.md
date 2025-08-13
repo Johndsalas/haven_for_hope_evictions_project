@@ -85,15 +85,7 @@ During preparation data was modified to contain the following
 * Information from the requests and eviction data was combined to gather the number of homelessness requests and eviction cases per zip code in San Antonio in 2024
 * A scatterplot and correlation test of this shows a strong correlation between the two that is statistically significant
 
-<<<<<<< HEAD
 ### Notebook Exploration Conclusions
-=======
-## Exploration in Tableau
-
-### Full Tableau Story Coming Soon
-
-## Conclusion
->>>>>>> origin/main
 * Fluxuations in the number of 311 calls related to homelessness seem to be a good indicator of fluctuations in the homeless population
 * Fluxuations in the number of eviction cases with judgements likely leading to evictions seem to be a good indicator of fluctuations in the total number of evictions
 * There is a strong correlation between the number of eviction cases and the number of 311 calls related to homelessness in San Antonio in 2024
