@@ -33,6 +33,15 @@ Data was gathered and prepared for initial exploration using the following metho
 
 During preparation data was modified to contain the following
 
+### SA Eviction Cases
+
+|Feature|Definition|
+|-------|----------|
+|case_number| ID number assigned to case|
+|judgement_date| Date of most recent decision made on case|
+|judgement| Type of decision made most recently on case|
+|Zip_code| Zip code where case was ruled|
+
 ### SA 311 Homelessness Requests
 
 |Feature|Definition|
@@ -43,18 +52,9 @@ During preparation data was modified to contain the following
 |longitude| Longitudinal coordinate of request|
 |zip_code| Zipcode of request|
 
-### SA Eviction Cases
-
-|Feature|Definition|
-|-------|----------|
-|case_number| ID number assigned to case|
-|judgement_date| Date of most recent decision made on case|
-|judgement| Type of decision made most recently on case|
-|Zip_code| Zip code where case was ruled|
-
 **For full preparation details see prep notebooks:**
-* [requests_prep_notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/requests_prep_notebook.ipynb)
 * [evictions_prep_notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/evictions_prep_notebook.ipynb)
+* [requests_prep_notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/requests_prep_notebook.ipynb)
 
 ## Notebook Exploration Key Questions and Findings
 
@@ -95,7 +95,7 @@ During preparation data was modified to contain the following
 
 ## Reproducibility
 
-The following modules can be used to modify data from its original form to project ready. Including modifying service request data to only include data from 2024. Your project folder must include a copy of the original data and any supplemental files needed for all utilized libraries.
+The following modules can be used to modify data from its original form to project ready. Including modifying service request data to only include data from 2024. Your project folder must include a copy of the original data and any supplemental files needed for all utilized python libraries.
 
 * [get_requests](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_requests.py)
 * [get_evictions](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_evictions.py)

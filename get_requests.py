@@ -1,21 +1,48 @@
-''' Module for preparing 311 service requests concering homelessness'''
+''' Module for preparing 311 service requests data'''
 
 import pandas as pd
 from pyproj import Transformer
 import geopandas as gpd
 from shapely.geometry import Point
 
-def get_preped_311_data():
-    '''Prepare 311 data for project'''
+def get_preped_311():
+    
     # read in original data
     df = pd.read_csv('311_service_requests.csv')
+
+    # get relevent columns and rename for ease of use
+    df = drop_and_rename(df)
+
+    # drop rows not associated with homelessness
+    df = drop_non_homeless_rows(df)
+
+    # convert x and y coordinate columns from EPSG:2278 (Texas South Central, ft) to latitude and longitude
+    # add column of corresponding zip codes
+    df = get_zips(df)
+
+    # drop rows with zip codes that are not in San Antonio
+    df = get_sa_zips(df)
+
+    # cast open_date as datetime
+    df['open_date'] = pd.to_datetime(df['open_date'])
+
+    # get only data from 2024
+    df = df[df['open_date'].dt.year == 2024]
     
-    # Get relevant columns
+    # export to excel
+    df.to_excel('requests_full_prep.xlsx', index=False)
+
+
+def drop_and_rename(df):
+    '''Take in a dataframe 
+       Rename relevent columns for ease of use drop other columns
+       Return dataframe'''
+    
+     # Get relevant columns
     df = df[['OPENEDDATETIME',
              'TYPENAME', 
              'XCOORD',
              'YCOORD']]
-
 
     df = df.rename(columns = {'OPENEDDATETIME' : 'open_date',
                               'TYPENAME' : 'type',  
@@ -23,7 +50,15 @@ def get_preped_311_data():
                               'XCOORD' : 'x_coord',
                               'YCOORD' : 'y_coord'})
     
-    # keep only rows with values in type column that are associated with homelessness
+    return df
+
+
+def drop_non_homeless_rows(df):
+    '''Take in a dataframe 
+       drop rows not associated with homelessness
+       Return dataframe'''
+    
+     # keep only rows with values in type column that are associated with homelessness
     homeless = ['Homeless Encampment',
                 'Homeless Outreach',
                 'Encampment Abatement',
@@ -32,7 +67,15 @@ def get_preped_311_data():
                 'Sanitation_NA-Encampment Abatement']
     
     df = df[df['type'].isin(homeless)].reset_index(drop=True)
-    
+
+    return df
+
+
+def get_zips(df):
+    '''Take in a dataframe 
+       convert x and y coordinate columns from EPSG:2278 (Texas South Central, ft) to latitude and longitude
+       add column of corresponding zip codes
+       Return dataframe'''
     # convert coordinates to latitude and longitude
     # define transformer: from EPSG:2278 (Texas South Central, ft) to EPSG:4326 (WGS84)
     transformer = Transformer.from_crs("EPSG:2278", "EPSG:4326", always_xy=True)
@@ -75,6 +118,12 @@ def get_preped_311_data():
              'longitude',
              'zip_code']]
     
+    return df
+    
+def get_sa_zips(df):
+    '''Take in a dataframe 
+       drop rows with zipcodes not in San Antonio
+       Return dataframe'''
     # drop rows with zipcodes not in San Antonio
     # list of zips in San Antonio
     sa_zips = ['78201', '78202', '78203', '78204', '78205', 
@@ -98,11 +147,8 @@ def get_preped_311_data():
 
     df = df[df.zip_code.isin(sa_zips)]
     
-    # casting open_date as datetime
-    df['open_date'] = pd.to_datetime(df['open_date'])
-    
-    df.to_excel('requests_prepared.xlsx', index=False)
-
+    return df
+   
 if __name__ == '__main__':
 
-    get_preped_311_data()
+    get_preped_311()

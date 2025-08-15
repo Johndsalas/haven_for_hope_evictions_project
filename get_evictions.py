@@ -7,6 +7,27 @@ def get_prepared_eviction_data():
     
     # read in unprepared data
     df = pd.read_excel('eviction_cases.xlsx')
+
+    # get relevent columns and rename for ease of use
+    df = drop_and_rename(df)
+
+    # get 5 digit zip codes and drop rows that have zip codes that are not in San Antonio
+    df = get_sa_zips(df)
+
+    # drop rows with duplicate case numbers keeping only the most recent
+    df = drop_duplicate_case_numbers(df)
+
+    # drop rows where disposition is not likely to result in eviction
+    df = get_evictions(df)
+
+    # export df to excel file
+    df.to_excel('evictions_full_prep.xlsx', index=False)
+
+
+def drop_and_rename(df):
+    '''Take in a dataframe 
+       Rename relevent columns for ease of use drop other columns
+       Return dataframe'''
     
     # get relevant columns and rename for clarity
     df = df[['CaseNumber',        # used to distinguish unique cases
@@ -19,7 +40,15 @@ def get_prepared_eviction_data():
                             'JUDGMENT_DT'     : 'judgement_date',
                             'POSTAL_CD'       : 'zip_code',
                             'Disposition'     : 'disposition'})
+    
+    return df
 
+
+def get_sa_zips(df):
+    '''Take in a dataframe 
+       get 5 digit zip codes and drop rows that have zip codes that are not in San Antonio
+       Return dataframe'''
+    
     # drop rows with zip codes not in San Antonio
     # get first five digits of values in zip_code column
     df['zip_code'] = df.zip_code.apply(lambda x : str(x)[:5])
@@ -47,6 +76,14 @@ def get_prepared_eviction_data():
     # keep only rows that have a zip code in sa_zips
     df = df[df.zip_code.isin(sa_zips)]
     
+    return df
+
+
+def drop_duplicate_case_numbers(df):
+    '''Take in a dataframe 
+       drop rows with duplicate case numbers keeping only the most recent
+       Return dataframe'''
+    
     # drop rows with duplicate case numbers
     # sort values in descending order
     df = df.sort_values(by='judgement_date',ascending=False).reset_index(drop=True)
@@ -54,13 +91,21 @@ def get_prepared_eviction_data():
     # drop rows with duplicate case numbers keeping only the first
     df = df.drop_duplicates(subset='case_number', keep='first').reset_index(drop=True)
 
+    return df
+
+
+def  get_evictions(df):
+    '''Take in a dataframe 
+       drop rows where disposition is not likely to result in eviction
+       Return dataframe'''
+    
     # drop rows where disposition is not likely to result in eviction
     evict = ['Default Judgments (OCA)',
              'Judgment for Plaintiff (OCA)']
 
     df = df[df.disposition.isin(evict)]
-    
-    df.to_excel('evictions_prepared.xlsx', index=False)
+
+    return df
     
 
 if __name__ == '__main__':
