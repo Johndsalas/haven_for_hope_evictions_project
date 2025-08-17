@@ -1,13 +1,14 @@
-''' Module for preparing a dataframe comparing the number of eviction cases and service calls per zip code using data prepared for this project'''
+''' Module for merging prepared eviction cases and service calls data into a dataframe showing the number of service requests and eviction cases per zipcode'''
 
 import pandas as pd
 
 def get_zip_compare():
-    '''Takes in evictions and requests dataframes
-       Returns both dataframes with zipcode column set to string type
-       and a dataframe showing the number of homelessness requests and eviction
-       cases took place in each zipcode in San Antonio in 2024'''
+    '''reads in prepared service request and eviction data 
+       exports merge of dataframes showing the number of service requests and eviction cases per zipcode to excel file'''
     
+    # read in eviction case an service request data
+    rdf = pd.read_excel('requests_full_prep.xlsx')
+    edf = pd.read_excel('evictions_full_prep.xlsx')
     
 
     # cast zip_code column in both df's as string type
@@ -57,6 +58,9 @@ def get_zip_compare():
     # converting dict to dataframe
     df = pd.DataFrame(zip_dict)
 
-    df.to_excel('zip_zips_2024.xlsx')
-        
-    return df
+    df.to_excel('zip_compare_full_prep.xlsx')
+
+
+if __name__ == '__main__':
+
+    get_zip_compare()
