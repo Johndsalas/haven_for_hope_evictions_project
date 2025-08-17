@@ -2,6 +2,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy.stats import pearsonr
 
 # import data sets
@@ -118,11 +119,25 @@ def get_zip_scatter(zipdf):
        along with correlation coefficient and p-value'''
     
     # graph info
-    zipdf.plot.scatter(x='eviction_cases', y='homelessness_requests')
+    zipdf = pd.read_excel('zip_compare_full_prep.xlsx')
+    
+    x = zipdf.eviction_cases
+    y = zipdf.homelessness_requests
+
+    # print plot
+    plt.scatter(x,y, s = 10)
+
+    # calculate equation for trendline
+    z = np.polyfit(x, y, 1)
+    p = np.poly1d(z)
+
+    # add trendline to plot
+    plt.plot(x, p(x), color = 'red')
+
     plt.title('Strong Correlation Between Eviction Cases and Homelessness Requests')
     plt.xlabel('Eviction Cases')
     plt.ylabel('Homelessness Requests')
-    plt.grid(True)
+    plt.grid(False)
     plt.show()
 
     # get and print correlation coefficient and p-value
