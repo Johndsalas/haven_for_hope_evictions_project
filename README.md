@@ -2,7 +2,7 @@
 
 ## Goal
 
-Explore the relationship between evictions and homelessness, as measured by eviction cases and 311 service requests occurring in San Antonio in 2024, by evaluating their statistical relationship and visualizing their geospatial relationship
+Explore the relationship between evictions and homelessness by evaluating their statistical and geospatial relationship
 
 ## Research Questions
 
@@ -102,7 +102,7 @@ The following modules can be used to modify data from its original form to proje
 
 This module can be used to combine the prepared version of each data into a dataframe that contains the number of eviction cases and 311 service requests occured in each San Antonio zip code in 2024
 
-* [get_zip_compare](copythelinkwhenyoumakethemodule)
+* [zip_compare](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/zip_compare.py)
 
 ## Tableau Exploration
 
@@ -111,5 +111,5 @@ The original goal and research questions are explored, as well as observations a
 ### [Full Tableau Story](https://public.tableau.com/app/profile/john.salas/viz/HavenEvictionsProject/Story?publish=yes)
 
 ## Further Inquiry
-* Because the evidence we have is correlatory we cannot rule out the possibility that evictions and homelessness are both independently driven by third variable such as population
-* More research into this possibility should be conducted in the future
+* Given additional time I would investigate population as a possible confounding variable. It is possible that population is a driver of both eviction cases and service requests creating the illusion of a relationship. Additional analysis is needed to rule out this possibility. 
+
