@@ -1,4 +1,4 @@
-# Haven for Hope Eviction Project
+# Haven for Hope Evictions Project
 
 ## Goal
 
