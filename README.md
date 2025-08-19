@@ -23,7 +23,7 @@ Data was gathered and prepared for initial exploration using the following metho
 * When exploration notebook is run it produces an additional export of the data containing only data from 2024
 
 **Bexar County eviction data was prepared using the following manner:**
-* The original data was provided by Bexar County to Ryan Orsinger, Director of Data Science and Research at Haven for Hope, who provided the data to me
+* The original data was The original data was collected from a [Bexar County open records request](https://www.bexar.org/2962/Open-Records-Requests)
 * Relevant columns were renamed for ease of use all other columns were dropped
 * Dropped rows with zip codes that were outside of San Antonio
 * Dropped rows with duplicate case numbers keeping only the row with the most recent judgement date for each unique case number
@@ -111,5 +111,5 @@ The original goal and research questions are explored, as well as observations a
 ### [Full Tableau Story](https://public.tableau.com/app/profile/john.salas/viz/HavenEvictionsProject/Story?publish=yes)
 
 ## Further Inquiry
-* Given additional time I would investigate population as a possible confounding variable. It is possible that population is a driver of both eviction cases and service requests creating the illusion of a relationship. Additional analysis is needed to rule out this possibility. 
+* Given additional time I would investigate population as a possible confounding variable. It is possible that population is a driver of both eviction cases and service requests creating the illusion of a relationship. Additional analysis is needed to rule out this possibility.
 
