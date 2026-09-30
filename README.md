@@ -7,7 +7,7 @@ Explore the relationship between evictions and homelessness by evaluating their 
 ## Research Questions
 
 1) What is the statistical relationship between eviction cases and 311 service calls for homelessness related issues?
-2) What is the geospatial relationship between eviction cases and 311 service calls?
+2) What is the geospatial relationship between eviction cases and 311 service calls for homelessness related issues?
 
 ## Prepare
 
@@ -15,19 +15,19 @@ Data was gathered and prepared for initial exploration using the following metho
 
 **311 request data was prepared using the following manner:**
 * The original data was downloaded from [Open Data SA](https://data.sanantonio.gov/dataset/service-calls)
-* Relevant columns were renames for ease of use all other columns were dropped
+* Relevant columns were renamed for ease of use and all other columns were dropped
 * Dropped rows not pertaining to homelessness
 * X and Y coordinate columns were converted from NAD 1983 State Plane Texas South Central FIPS 4204 Feet to Tableau friendly latitude and longitude coordinates using pyproj
-* added column of Zip Codes derived from latitude and longitude using geopandas
+* Added a column of zip codes derived from latitude and longitude using GeoPandas
 * Dropped rows with zip codes that were outside of San Antonio
 * When exploration notebook is run it produces an additional export of the data containing only data from 2024
 
 **Bexar County eviction data was prepared using the following manner:**
-* The original data was The original data was collected from a [Bexar County open records request](https://www.bexar.org/2962/Open-Records-Requests)
-* Relevant columns were renamed for ease of use all other columns were dropped
+* The original data was collected from a [Bexar County open records request](https://www.bexar.org/2962/Open-Records-Requests)
+* Relevant columns were renamed for ease of use and all other columns were dropped
 * Dropped rows with zip codes that were outside of San Antonio
 * Dropped rows with duplicate case numbers keeping only the row with the most recent judgement date for each unique case number
-* Dropped rows with disposition value indicating the case did not result in an eviction
+* Dropped rows with a disposition value indicating the case was unlikely to result in an eviction
 
 ## Data Dictionary
 
@@ -40,13 +40,13 @@ During preparation data was modified to contain the following
 |case_number| ID number assigned to case|
 |judgement_date| Date of most recent decision made on case|
 |judgement| Type of decision made most recently on case|
-|Zip_code| Zip code where case was ruled|
+|zip_code| Zip code of the defendant's address|
 
 ### SA 311 Homelessness Requests
 
 |Feature|Definition|
 |-------|----------|
-|open_data| Date request was opened|
+|open_date| Date request was opened|
 |type| Type of request made|
 |latitude| Latitudinal coordinate of request|
 |longitude| Longitudinal coordinate of request|
@@ -60,7 +60,7 @@ During preparation data was modified to contain the following
 
 ### Is there enough time overlap in the evictions and requests data to make for a good comparison?
 * Evictions data cover all of 2024
-* Requests data seems to cover from late 2023 to early 2025
+* Requests data cover from late 2023 to early 2025
 * Data can be compared using eviction and request data collected for 2024
 
 ### What different types of homelessness related 311 requests were made in 2024 and how are they distributed in the data?
@@ -75,21 +75,23 @@ During preparation data was modified to contain the following
 ### What is the distribution of judgements for cases being used to track evictions and are these cases a good measure of total evictions?
 * Only cases with judgements for the plaintiff or default judgements were included
 * Eviction cases that rule in favor of the plaintiff begin the process of a tenant being evicted
-* Default judgements are awarded in the event that one of the parties failing to appear at court. Because the plaintiff would need to file a case for one to exist in the first place it is likely that the grand majority of these cases were in favor of the plaintiff and began an eviction process
-* It stands to reason that cases with either judgement as it’s most recent judgement represent an instance of one or more persons being evicted
+* Default judgements are awarded in the event that one of the parties fails to appear in court. Because the plaintiff would need to file a case for one to exist in the first place it is likely that the great majority of these cases were in favor of the plaintiff and began an eviction process
+* It stands to reason that cases with either judgement as its most recent judgement represent an instance of one or more persons being evicted
 * Tenants cannot lawfully be evicted in San Antonio without filing for evictions
 * Informal evictions such as those between family members may not go through a formal eviction process and so will not appear in our data
 * While we cannot capture all evictions in our data it stands to reason that changes in eviction case numbers will, if imperfectly, reflect changes in the total number of evictions so it is a good measure to use
 
 ### Is there a correlation between eviction cases and 311 homelessness requests?
 * Information from the requests and eviction data was combined to gather the number of homelessness requests and eviction cases per zip code in San Antonio in 2024
-* A scatterplot and correlation test of this shows a strong correlation between the two that is statistically significant
+* 2,197 homelessness requests and 14,158 eviction cases from 2024 were compared across San Antonio zip codes
+* A scatterplot and correlation test of this shows a strong correlation between the two that is statistically significant (Pearson's r = 0.62, R² = 0.39, p < 0.0001)
+* Evictions explain about 39 percent of the variation in homelessness requests across zip codes
 
 ### Notebook Exploration Conclusions
-* Fluxuations in the number of 311 calls related to homelessness seem to be a good indicator of fluctuations in the homeless population
-* Fluxuations in the number of eviction cases with judgements likely leading to evictions seem to be a good indicator of fluctuations in the total number of evictions
+* Fluctuations in the number of 311 calls related to homelessness seem to be a good indicator of fluctuations in the homeless population
+* Fluctuations in the number of eviction cases with judgements likely leading to evictions seem to be a good indicator of fluctuations in the total number of evictions
 * There is a strong correlation between the number of eviction cases and the number of 311 calls related to homelessness in San Antonio in 2024
-* All available evidence suggests that evictions is a driver of homelessness
+* The evidence is consistent with evictions contributing to homelessness, but a correlation alone cannot establish cause (see Further Inquiry)
 
 ### [Exploration Notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb)
 
@@ -100,7 +102,7 @@ The following modules can be used to modify data from its original form to proje
 * [get_requests](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_requests.py)
 * [get_evictions](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/get_evictions.py)
 
-This module can be used to combine the prepared version of each data into a dataframe that contains the number of eviction cases and 311 service requests occured in each San Antonio zip code in 2024
+This module can be used to combine the prepared version of each data into a dataframe that contains the number of eviction cases and 311 service requests occurring in each San Antonio zip code in 2024
 
 * [zip_compare](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/zip_compare.py)
 
@@ -112,4 +114,3 @@ The original goal and research questions are explored, as well as observations a
 
 ## Further Inquiry
 * Given additional time I would investigate population as a possible confounding variable. It is possible that population is a driver of both eviction cases and service requests creating the illusion of a relationship. Additional analysis is needed to rule out this possibility.
-
