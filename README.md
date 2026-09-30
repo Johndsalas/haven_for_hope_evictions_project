@@ -109,9 +109,7 @@ This module can be used to combine the prepared version of each data into a data
 
 ## Tableau Exploration
 
-The original goal and research questions are explored, as well as observations and conclusions presented in a Tableau story
-
-### [Full Tableau Story](https://public.tableau.com/app/profile/john.salas/viz/HavenEvictionsProject/Story?publish=yes)
+Project goals and research questions are explored in a [Tableau Story](https://public.tableau.com/app/profile/john.salas/viz/HavenEvictionsProject/Story?publish=yes)
 
 ## Further Inquiry
 * Given additional time I would investigate population as a possible confounding variable. It is possible that population is a driver of both eviction cases and service requests creating the illusion of a relationship. Additional analysis is needed to rule out this possibility.
