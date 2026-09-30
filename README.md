@@ -92,8 +92,6 @@ During preparation data was modified to contain the following
 * Fluctuations in the number of eviction cases with judgements likely leading to evictions seem to be a good indicator of fluctuations in the total number of evictions
 * There is a strong correlation between the number of eviction cases and the number of 311 calls related to homelessness in San Antonio in 2024
 * Evictions and homelessness requests rise and fall together across San Antonio zip codes, with evictions accounting for about 39 percent of the variation. That makes eviction prevention a reasonable lever to include in homelessness strategy
-* Evictions and homelessness requests rise and fall together across San Antonio zip codes, with evictions accounting for about 39 percent of the variation. That makes eviction prevention a reasonable lever to include in homelessness strategy.
-
 * [Exploration Notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb)
 
 ## Reproducibility
