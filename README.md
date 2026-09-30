@@ -94,7 +94,7 @@ During preparation data was modified to contain the following
 * Evictions and homelessness requests rise and fall together across San Antonio zip codes, with evictions accounting for about 39 percent of the variation. That makes eviction prevention a reasonable lever to include in homelessness strategy
 * Evictions and homelessness requests rise and fall together across San Antonio zip codes, with evictions accounting for about 39 percent of the variation. That makes eviction prevention a reasonable lever to include in homelessness strategy.
 
-### [Exploration Notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb)
+* [Exploration Notebook](https://github.com/Johndsalas/haven_for_hope_evictions_project/blob/main/explore.ipynb)
 
 ## Reproducibility
 
